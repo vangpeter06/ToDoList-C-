@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Models;
+using System;
 
 namespace ToDoList.Controllers
 {
@@ -18,7 +19,7 @@ namespace ToDoList.Controllers
 
         public ActionResult Index()
         {
-            return View(_db.Items.ToList());
+            return View(_db.Items.OrderBy(item => item.Date).ToList());
         }
 
         public ActionResult Create()
